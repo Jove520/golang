@@ -1,0 +1,11 @@
+﻿*.exe
+*.test
+*.out
+coverage.out
+.env
+app.env
+.DS_Store
+node_modules/
+dist/
+simplebank
+mysimplebank
