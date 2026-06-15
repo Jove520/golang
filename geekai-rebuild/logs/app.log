@@ -1,0 +1,404 @@
+2026-06-10T18:08:53.071+0800	INFO	core/app_server.go:35	server listening on http://0.0.0.0:5678
+2026-06-10T18:11:12.359+0800	INFO	core/app_server.go:35	server listening on http://0.0.0.0:5678
+2026-06-10T18:11:32.892+0800	INFO	core/app_server.go:35	server listening on http://0.0.0.0:5678
+2026-06-10T18:11:48.247+0800	INFO	core/app_server.go:35	server listening on http://0.0.0.0:5678
+2026-06-10T18:11:50.240+0800	ERROR	middleware/recover.go:19	handler panic: manual panic test
+goroutine 9 [running]:
+runtime/debug.Stack()
+	C:/Program Files/Go/src/runtime/debug/stack.go:26 +0x5e
+geekai-rebuild/core.(*AppServer).registerMiddlewares.RecoverMiddleware.func2.1()
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/recover.go:19 +0x45
+panic({0x7ff7ad491b60?, 0x7ff7ad622330?})
+	C:/Program Files/Go/src/runtime/panic.go:860 +0x13a
+geekai-rebuild/core.(*AppServer).registerRoutes.func2(0x7ff7ad56ba60?)
+	D:/AAAJove/geekai/geekai-rebuild/core/app_server.go:52 +0x25
+github.com/gin-gonic/gin.(*Context).Next(0x12a8003e4000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+geekai-rebuild/core.(*AppServer).registerMiddlewares.RecoverMiddleware.func2(0x7ff7adf1ba60?)
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/recover.go:29 +0x48
+github.com/gin-gonic/gin.(*Context).Next(0x12a8003e4000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+geekai-rebuild/core.(*AppServer).registerMiddlewares.TrimSpaceMiddleware.func1(0x12a8003e4000)
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/parameter.go:17 +0x2f
+github.com/gin-gonic/gin.(*Context).Next(0x12a8003e4000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0x12a80049a380, 0x12a8003e4000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:722 +0x45e
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0x12a80049a380, {0x7ff7ad62dd20, 0x12a8003da000}, 0x12a8003ba000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:672 +0x1dc
+net/http.serverHandler.ServeHTTP({0x12a80038e040?}, {0x7ff7ad62dd20?, 0x12a8003da000?}, 0x1?)
+	C:/Program Files/Go/src/net/http/server.go:3311 +0x8e
+net/http.(*conn).serve(0x12a80036a630, {0x7ff7ad62ee20, 0x12a80049d800})
+	C:/Program Files/Go/src/net/http/server.go:2073 +0x650
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3464 +0x485
+
+2026-06-10T18:12:08.251+0800	INFO	core/app_server.go:35	server listening on http://0.0.0.0:5678
+2026-06-10T18:12:14.461+0800	INFO	core/app_server.go:35	server listening on http://0.0.0.0:5678
+2026-06-11T09:19:05.592+0800	INFO	core/app_server.go:42	server listening on http://0.0.0.0:5678
+2026-06-11T09:20:06.667+0800	ERROR	middleware/recover.go:19	handler panic: manual panic test
+goroutine 8 [running]:
+runtime/debug.Stack()
+	C:/Program Files/Go/src/runtime/debug/stack.go:26 +0x5e
+geekai-rebuild/core.(*AppServer).registerMiddlewares.RecoverMiddleware.func2.1()
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/recover.go:19 +0x45
+panic({0x7ff759f74ce0?, 0x7ff75a117040?})
+	C:/Program Files/Go/src/runtime/panic.go:860 +0x13a
+geekai-rebuild/handler.(*BaseHandler).RegisterRoutes.func2(0x7ff75a05bea0?)
+	D:/AAAJove/geekai/geekai-rebuild/handler/base_handler.go:27 +0x25
+github.com/gin-gonic/gin.(*Context).Next(0xffe118e6000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+geekai-rebuild/core.(*AppServer).registerMiddlewares.RecoverMiddleware.func2(0x7ff759f56e60?)
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/recover.go:29 +0x48
+github.com/gin-gonic/gin.(*Context).Next(0xffe118e6000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+geekai-rebuild/core.(*AppServer).registerMiddlewares.TrimSpaceMiddleware.func1(0xffe118e6000)
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/parameter.go:17 +0x2f
+github.com/gin-gonic/gin.(*Context).Next(0xffe118e6000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0xffe11688380, 0xffe118e6000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:722 +0x45e
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0xffe11688380, {0x7ff75a122ac0, 0xffe118dc0f0}, 0xffe118ba280)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:672 +0x1dc
+net/http.serverHandler.ServeHTTP({0xffe11894040?}, {0x7ff75a122ac0?, 0xffe118dc0f0?}, 0x1?)
+	C:/Program Files/Go/src/net/http/server.go:3311 +0x8e
+net/http.(*conn).serve(0xffe116a4870, {0x7ff75a123d68, 0xffe116fa120})
+	C:/Program Files/Go/src/net/http/server.go:2073 +0x650
+created by net/http.(*Server).Serve in goroutine 21
+	C:/Program Files/Go/src/net/http/server.go:3464 +0x485
+
+2026-06-11T09:20:39.833+0800	INFO	geekai-rebuild/main.go:67	shutting down server
+2026-06-11T09:27:55.239+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-11T09:27:55.765+0800	ERROR	middleware/recover.go:19	handler panic: manual panic test
+goroutine 37 [running]:
+runtime/debug.Stack()
+	C:/Program Files/Go/src/runtime/debug/stack.go:26 +0x5e
+geekai-rebuild/core.(*AppServer).registerMiddlewares.RecoverMiddleware.func2.1()
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/recover.go:19 +0x45
+panic({0x7ff60af84d00?, 0x7ff60b127060?})
+	C:/Program Files/Go/src/runtime/panic.go:860 +0x13a
+geekai-rebuild/handler.(*BaseHandler).RegisterRoutes.func2(0x7ff60b06bec0?)
+	D:/AAAJove/geekai/geekai-rebuild/handler/base_handler.go:27 +0x25
+github.com/gin-gonic/gin.(*Context).Next(0x13e9b72b4100)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+geekai-rebuild/core.(*AppServer).registerMiddlewares.RecoverMiddleware.func2(0x7ff60af66e40?)
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/recover.go:29 +0x48
+github.com/gin-gonic/gin.(*Context).Next(0x13e9b72b4100)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+geekai-rebuild/core.(*AppServer).registerMiddlewares.TrimSpaceMiddleware.func1(0x13e9b72b4100)
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/parameter.go:17 +0x2f
+github.com/gin-gonic/gin.(*Context).Next(0x13e9b72b4100)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0x13e9b742e380, 0x13e9b72b4100)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:722 +0x45e
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0x13e9b742e380, {0x7ff60b132ae0, 0x13e9b735a0f0}, 0x13e9b7358280)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:672 +0x1dc
+net/http.serverHandler.ServeHTTP({0x13e9b72b0f00?}, {0x7ff60b132ae0?, 0x13e9b735a0f0?}, 0x1?)
+	C:/Program Files/Go/src/net/http/server.go:3311 +0x8e
+net/http.(*conn).serve(0x13e9b73fe900, {0x7ff60b133d88, 0x13e9b7479ad0})
+	C:/Program Files/Go/src/net/http/server.go:2073 +0x650
+created by net/http.(*Server).Serve in goroutine 21
+	C:/Program Files/Go/src/net/http/server.go:3464 +0x485
+
+2026-06-11T09:28:19.717+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-11T09:28:20.257+0800	ERROR	middleware/recover.go:19	handler panic: manual panic test
+goroutine 10 [running]:
+runtime/debug.Stack()
+	C:/Program Files/Go/src/runtime/debug/stack.go:26 +0x5e
+geekai-rebuild/core.(*AppServer).registerMiddlewares.RecoverMiddleware.func2.1()
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/recover.go:19 +0x45
+panic({0x7ff6925b4d00?, 0x7ff692757060?})
+	C:/Program Files/Go/src/runtime/panic.go:860 +0x13a
+geekai-rebuild/handler.(*BaseHandler).RegisterRoutes.func2(0x7ff69269bec0?)
+	D:/AAAJove/geekai/geekai-rebuild/handler/base_handler.go:27 +0x25
+github.com/gin-gonic/gin.(*Context).Next(0xc7df1f28300)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+geekai-rebuild/core.(*AppServer).registerMiddlewares.RecoverMiddleware.func2(0xc7df1f73948?)
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/recover.go:29 +0x48
+github.com/gin-gonic/gin.(*Context).Next(0xc7df1f28300)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+geekai-rebuild/core.(*AppServer).registerMiddlewares.TrimSpaceMiddleware.func1(0xc7df1f28300)
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/parameter.go:17 +0x2f
+github.com/gin-gonic/gin.(*Context).Next(0xc7df1f28300)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0xc7df20da380, 0xc7df1f28300)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:722 +0x45e
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0xc7df20da380, {0x7ff692762ae0, 0xc7df22860f0}, 0xc7df217e280)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:672 +0x1dc
+net/http.serverHandler.ServeHTTP({0xc7df2015140?}, {0x7ff692762ae0?, 0xc7df22860f0?}, 0x1?)
+	C:/Program Files/Go/src/net/http/server.go:3311 +0x8e
+net/http.(*conn).serve(0xc7df204c2d0, {0x7ff692763d88, 0xc7df21a7800})
+	C:/Program Files/Go/src/net/http/server.go:2073 +0x650
+created by net/http.(*Server).Serve in goroutine 8
+	C:/Program Files/Go/src/net/http/server.go:3464 +0x485
+
+2026-06-11T14:20:33.982+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-11T14:20:34.067+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-11T14:20:34.067+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-11T14:23:33.758+0800	INFO	geekai-rebuild/main.go:72	shutting down server
+2026-06-11T14:31:01.841+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-11T14:31:01.869+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-11T14:31:01.874+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-11T14:31:01.874+0800	INFO	store/health.go:19	redis health check passed
+2026-06-11T14:31:01.875+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-11T14:32:06.222+0800	INFO	geekai-rebuild/main.go:73	shutting down server
+2026-06-11T14:40:01.552+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-11T14:40:01.581+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-11T14:40:01.586+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-11T14:40:01.586+0800	INFO	store/health.go:19	redis health check passed
+2026-06-11T14:40:01.587+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-11T14:45:22.808+0800	ERROR	middleware/recover.go:19	handler panic: manual panic test
+goroutine 69 [running]:
+runtime/debug.Stack()
+	C:/Program Files/Go/src/runtime/debug/stack.go:26 +0x5e
+geekai-rebuild/core.(*AppServer).registerMiddlewares.RecoverMiddleware.func2.1()
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/recover.go:19 +0x45
+panic({0x7ff657047d00?, 0x7ff65726be40?})
+	C:/Program Files/Go/src/runtime/panic.go:860 +0x13a
+geekai-rebuild/handler.(*BaseHandler).RegisterRoutes.func2(0x7ff65716eae0?)
+	D:/AAAJove/geekai/geekai-rebuild/handler/base_handler.go:27 +0x25
+github.com/gin-gonic/gin.(*Context).Next(0x18869ad22000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+geekai-rebuild/core.(*AppServer).registerMiddlewares.RecoverMiddleware.func2(0x7ff6561db856?)
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/recover.go:29 +0x48
+github.com/gin-gonic/gin.(*Context).Next(0x18869ad22000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+geekai-rebuild/core.(*AppServer).registerMiddlewares.TrimSpaceMiddleware.func1(0x18869ad22000)
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/parameter.go:17 +0x2f
+github.com/gin-gonic/gin.(*Context).Next(0x18869ad22000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0x18869aea6380, 0x18869ad22000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:722 +0x45e
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0x18869aea6380, {0x7ff65727b700, 0x18869ab7c000}, 0x18869ad2a000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:672 +0x1dc
+net/http.serverHandler.ServeHTTP({0x18869ae92000?}, {0x7ff65727b700?, 0x18869ab7c000?}, 0x1?)
+	C:/Program Files/Go/src/net/http/server.go:3311 +0x8e
+net/http.(*conn).serve(0x18869aa3a000, {0x7ff65727ce58, 0x18869ad84180})
+	C:/Program Files/Go/src/net/http/server.go:2073 +0x650
+created by net/http.(*Server).Serve in goroutine 35
+	C:/Program Files/Go/src/net/http/server.go:3464 +0x485
+
+2026-06-11T14:59:02.148+0800	INFO	geekai-rebuild/main.go:77	shutting down server
+2026-06-11T16:55:31.389+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-11T16:55:31.417+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-11T16:55:31.423+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-11T16:55:31.423+0800	INFO	store/health.go:19	redis health check passed
+2026-06-11T16:55:31.425+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-11T16:55:34.380+0800	INFO	geekai-rebuild/main.go:78	shutting down server
+2026-06-11T16:55:41.503+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-11T16:55:41.532+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-11T16:55:41.537+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-11T16:55:41.538+0800	INFO	store/health.go:19	redis health check passed
+2026-06-11T16:55:41.540+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-11T16:55:57.442+0800	INFO	geekai-rebuild/main.go:78	shutting down server
+2026-06-11T16:57:07.456+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-11T16:57:07.493+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-11T16:57:07.500+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-11T16:57:07.502+0800	INFO	store/health.go:19	redis health check passed
+2026-06-11T16:57:07.507+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-11T16:57:41.183+0800	ERROR	middleware/recover.go:19	handler panic: manual panic test
+goroutine 30 [running]:
+runtime/debug.Stack()
+	C:/Program Files/Go/src/runtime/debug/stack.go:26 +0x5e
+geekai-rebuild/core.(*AppServer).registerMiddlewares.RecoverMiddleware.func2.1()
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/recover.go:19 +0x45
+panic({0x7ff7a7d18dc0?, 0x7ff7a7f3d230?})
+	C:/Program Files/Go/src/runtime/panic.go:860 +0x13a
+geekai-rebuild/handler.(*BaseHandler).RegisterRoutes.func2(0x7ff7a7e3fea0?)
+	D:/AAAJove/geekai/geekai-rebuild/handler/base_handler.go:27 +0x25
+github.com/gin-gonic/gin.(*Context).Next(0x3de9569a8000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+geekai-rebuild/core.(*AppServer).registerMiddlewares.RecoverMiddleware.func2(0x7ff7a6eab856?)
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/recover.go:29 +0x48
+github.com/gin-gonic/gin.(*Context).Next(0x3de9569a8000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+geekai-rebuild/core.(*AppServer).registerMiddlewares.TrimSpaceMiddleware.func1(0x3de9569a8000)
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/parameter.go:17 +0x2f
+github.com/gin-gonic/gin.(*Context).Next(0x3de9569a8000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0x3de956a04000, 0x3de9569a8000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:722 +0x45e
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0x3de956a04000, {0x7ff7a7f4cae0, 0x3de9567640f0}, 0x3de9566a8640)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:672 +0x1dc
+net/http.serverHandler.ServeHTTP({0x3de956512440?}, {0x7ff7a7f4cae0?, 0x3de9567640f0?}, 0x1?)
+	C:/Program Files/Go/src/net/http/server.go:3311 +0x8e
+net/http.(*conn).serve(0x3de9565883f0, {0x7ff7a7f4e238, 0x3de956a06240})
+	C:/Program Files/Go/src/net/http/server.go:2073 +0x650
+created by net/http.(*Server).Serve in goroutine 65
+	C:/Program Files/Go/src/net/http/server.go:3464 +0x485
+
+2026-06-11T17:57:22.773+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-11T17:57:22.803+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-11T17:57:22.808+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-11T17:57:22.808+0800	INFO	store/health.go:19	redis health check passed
+2026-06-11T17:57:22.810+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-11T17:57:22.810+0800	FATAL	geekai-rebuild/main.go:75	server stopped	{"error": "listen tcp 0.0.0.0:5678: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+2026-06-11T17:58:16.396+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-11T17:58:16.423+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-11T17:58:16.429+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-11T17:58:16.429+0800	INFO	store/health.go:19	redis health check passed
+2026-06-11T17:58:16.431+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-11T17:58:16.431+0800	FATAL	geekai-rebuild/main.go:75	server stopped	{"error": "listen tcp 0.0.0.0:5678: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+2026-06-11T17:59:14.215+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-11T17:59:14.244+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-11T17:59:14.249+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-11T17:59:14.249+0800	INFO	store/health.go:19	redis health check passed
+2026-06-11T17:59:14.251+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-11T17:59:14.251+0800	FATAL	geekai-rebuild/main.go:75	server stopped	{"error": "listen tcp 0.0.0.0:5678: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+2026-06-11T18:01:19.256+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-11T18:01:19.284+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-11T18:01:19.289+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-11T18:01:19.290+0800	INFO	store/health.go:19	redis health check passed
+2026-06-11T18:01:19.291+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-11T18:01:58.390+0800	INFO	geekai-rebuild/main.go:82	shutting down server
+2026-06-12T08:41:30.445+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-12T08:41:30.481+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-12T08:41:30.488+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-12T08:41:30.489+0800	INFO	store/health.go:19	redis health check passed
+2026-06-12T08:41:30.491+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-12T14:01:55.690+0800	INFO	geekai-rebuild/main.go:82	shutting down server
+2026-06-12T14:02:28.139+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-12T14:02:28.168+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-12T14:02:28.174+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-12T14:02:28.174+0800	INFO	store/health.go:19	redis health check passed
+2026-06-12T14:02:28.177+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-12T14:03:23.079+0800	INFO	geekai-rebuild/main.go:82	shutting down server
+2026-06-12T14:25:37.547+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-12T14:25:37.616+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-12T14:25:37.624+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-12T14:25:37.625+0800	INFO	store/health.go:19	redis health check passed
+2026-06-12T14:25:37.629+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-12T14:30:58.480+0800	INFO	geekai-rebuild/main.go:82	shutting down server
+2026-06-12T14:31:01.713+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-12T14:31:01.744+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-12T14:31:01.750+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-12T14:31:01.750+0800	INFO	store/health.go:19	redis health check passed
+2026-06-12T14:31:01.753+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-12T14:31:16.179+0800	INFO	geekai-rebuild/main.go:82	shutting down server
+2026-06-12T14:32:23.070+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-12T14:32:23.100+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-12T14:32:23.105+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-12T14:32:23.112+0800	INFO	store/health.go:19	redis health check passed
+2026-06-12T14:32:23.114+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-12T14:35:11.299+0800	INFO	geekai-rebuild/main.go:82	shutting down server
+2026-06-12T14:35:15.072+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-12T14:35:15.106+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-12T14:35:15.113+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-12T14:35:15.113+0800	INFO	store/health.go:19	redis health check passed
+2026-06-12T14:35:15.115+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-12T14:35:40.456+0800	INFO	geekai-rebuild/main.go:82	shutting down server
+2026-06-12T14:35:52.135+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-12T14:35:52.166+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-12T14:35:52.173+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-12T14:35:52.174+0800	INFO	store/health.go:19	redis health check passed
+2026-06-12T14:35:52.176+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-12T15:22:45.264+0800	INFO	geekai-rebuild/main.go:82	shutting down server
+2026-06-12T15:23:23.407+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-12T15:23:23.461+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-12T15:23:23.470+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-12T15:23:23.470+0800	INFO	store/health.go:19	redis health check passed
+2026-06-12T15:23:23.474+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-12T17:02:00.417+0800	INFO	geekai-rebuild/main.go:82	shutting down server
+2026-06-12T17:02:23.206+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-12T17:02:23.238+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-12T17:02:23.243+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-12T17:02:23.243+0800	INFO	store/health.go:19	redis health check passed
+2026-06-12T17:02:23.246+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-12T17:04:21.346+0800	INFO	geekai-rebuild/main.go:82	shutting down server
+2026-06-12T17:27:01.135+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-12T17:27:01.166+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-12T17:27:01.172+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-12T17:27:01.172+0800	INFO	store/health.go:19	redis health check passed
+2026-06-12T17:27:01.173+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-12T17:32:24.713+0800	INFO	geekai-rebuild/main.go:86	shutting down server
+2026-06-12T17:45:13.987+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-12T17:45:14.035+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-12T17:45:14.046+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-12T17:45:14.048+0800	INFO	store/health.go:19	redis health check passed
+2026-06-12T17:45:14.055+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-12T17:46:11.934+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-12T17:46:11.976+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-12T17:46:11.984+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-12T17:46:11.986+0800	INFO	store/health.go:19	redis health check passed
+2026-06-12T17:46:11.991+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T09:06:11.966+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T09:06:12.010+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-15T09:06:12.018+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T09:06:12.020+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T09:06:12.025+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T09:21:38.101+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T09:21:38.140+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-15T09:21:38.150+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T09:21:38.152+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T09:21:38.159+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T09:22:12.329+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T09:22:12.374+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-15T09:22:12.384+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T09:22:12.385+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T09:22:12.391+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T09:23:06.069+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T09:23:06.127+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-15T09:23:06.136+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T09:23:06.139+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T09:23:06.144+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T09:25:41.568+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T09:25:41.612+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-15T09:25:41.621+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T09:25:41.622+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T09:25:41.626+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T09:26:37.950+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T09:26:37.992+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-15T09:26:38.002+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T09:26:38.004+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T09:26:38.009+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T09:27:49.983+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T09:27:50.021+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-15T09:27:50.029+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T09:27:50.031+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T09:27:50.035+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T09:28:22.123+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T09:28:22.161+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-15T09:28:22.169+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T09:28:22.171+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T09:28:22.176+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T09:29:02.707+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T09:29:02.753+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-15T09:29:02.762+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T09:29:02.764+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T09:29:02.768+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T09:31:34.087+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T09:31:34.122+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-15T09:31:34.127+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T09:31:34.127+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T09:31:34.129+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T10:29:45.293+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T10:29:45.561+0800	INFO	store/migrate.go:31	database migration completed
+2026-06-15T10:29:45.569+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T10:29:45.570+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T10:29:45.574+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T10:35:03.518+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T10:35:03.857+0800	INFO	store/migrate.go:31	database migration completed
+2026-06-15T10:35:03.866+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T10:35:03.867+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T10:35:03.872+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T10:36:41.470+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T10:36:41.943+0800	INFO	store/migrate.go:36	database migration completed
+2026-06-15T10:36:41.951+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T10:36:41.953+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T10:36:41.957+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T10:56:53.471+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T10:56:53.597+0800	INFO	store/migrate.go:43	database migration completed
+2026-06-15T10:56:53.608+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T10:56:53.611+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T10:56:53.616+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T11:00:51.352+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T11:03:59.505+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T11:03:59.608+0800	INFO	store/migrate.go:44	database migration completed
+2026-06-15T11:03:59.619+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T11:03:59.621+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T11:03:59.624+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-15T12:35:59.429+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-15T12:35:59.517+0800	INFO	store/migrate.go:44	database migration completed
+2026-06-15T12:35:59.526+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-15T12:35:59.528+0800	INFO	store/health.go:19	redis health check passed
+2026-06-15T12:35:59.549+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678

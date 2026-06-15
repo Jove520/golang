@@ -1,0 +1,39 @@
+2026-06-11T16:57:07.456+0800	INFO	store/mysql.go:40	mysql connected	{"dsn": "root:root@tcp(127.0.0.1:3306)/geekai?charset=utf8mb4&parseTime=True&loc=Local"}
+2026-06-11T16:57:07.493+0800	INFO	store/migrate.go:23	database migration completed
+2026-06-11T16:57:07.500+0800	INFO	store/redis.go:29	redis connected	{"addr": "127.0.0.1:6379", "db": 0}
+2026-06-11T16:57:07.502+0800	INFO	store/health.go:19	redis health check passed
+2026-06-11T16:57:07.507+0800	INFO	core/app_server.go:41	server listening on http://0.0.0.0:5678
+2026-06-11T16:57:41.183+0800	ERROR	middleware/recover.go:19	handler panic: manual panic test
+goroutine 30 [running]:
+runtime/debug.Stack()
+	C:/Program Files/Go/src/runtime/debug/stack.go:26 +0x5e
+geekai-rebuild/core.(*AppServer).registerMiddlewares.RecoverMiddleware.func2.1()
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/recover.go:19 +0x45
+panic({0x7ff7a7d18dc0?, 0x7ff7a7f3d230?})
+	C:/Program Files/Go/src/runtime/panic.go:860 +0x13a
+geekai-rebuild/handler.(*BaseHandler).RegisterRoutes.func2(0x7ff7a7e3fea0?)
+	D:/AAAJove/geekai/geekai-rebuild/handler/base_handler.go:27 +0x25
+github.com/gin-gonic/gin.(*Context).Next(0x3de9569a8000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+geekai-rebuild/core.(*AppServer).registerMiddlewares.RecoverMiddleware.func2(0x7ff7a6eab856?)
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/recover.go:29 +0x48
+github.com/gin-gonic/gin.(*Context).Next(0x3de9569a8000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+geekai-rebuild/core.(*AppServer).registerMiddlewares.TrimSpaceMiddleware.func1(0x3de9569a8000)
+	D:/AAAJove/geekai/geekai-rebuild/core/middleware/parameter.go:17 +0x2f
+github.com/gin-gonic/gin.(*Context).Next(0x3de9569a8000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192 +0x5f
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0x3de956a04000, 0x3de9569a8000)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:722 +0x45e
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0x3de956a04000, {0x7ff7a7f4cae0, 0x3de9567640f0}, 0x3de9566a8640)
+	C:/Users/Chcomct/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:672 +0x1dc
+net/http.serverHandler.ServeHTTP({0x3de956512440?}, {0x7ff7a7f4cae0?, 0x3de9567640f0?}, 0x1?)
+	C:/Program Files/Go/src/net/http/server.go:3311 +0x8e
+net/http.(*conn).serve(0x3de9565883f0, {0x7ff7a7f4e238, 0x3de956a06240})
+	C:/Program Files/Go/src/net/http/server.go:2073 +0x650
+created by net/http.(*Server).Serve in goroutine 65
+	C:/Program Files/Go/src/net/http/server.go:3464 +0x485
+
+
+2026/06/11 16:57:41 [31;1mD:/AAAJove/geekai/geekai-rebuild/handler/config_handler.go:53 [35;1mrecord not found
+[0m[33m[1.525ms] [34;1m[rows:0][0m SELECT * FROM `geekai_configs` WHERE name = 'missing' ORDER BY `geekai_configs`.`id` LIMIT 1

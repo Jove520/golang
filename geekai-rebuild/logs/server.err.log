@@ -1,0 +1,41 @@
+[Fx] PROVIDE	fx.Lifecycle <= go.uber.org/fx.New.func1()
+[Fx] PROVIDE	fx.Shutdowner <= go.uber.org/fx.(*App).shutdowner-fm()
+[Fx] PROVIDE	fx.DotGraph <= go.uber.org/fx.(*App).dotGraph-fm()
+[Fx] PROVIDE	*types.AppConfig <= main.main.func1()
+[Fx] PROVIDE	*core.AppServer <= geekai-rebuild/core.NewServer()
+[Fx] PROVIDE	*core.SystemConfigCache <= geekai-rebuild/core.NewSystemConfigCache()
+[Fx] PROVIDE	*handler.BaseHandler <= geekai-rebuild/handler.NewBaseHandler()
+[Fx] PROVIDE	*handler.ConfigHandler <= geekai-rebuild/handler.NewConfigHandler()
+[Fx] PROVIDE	*zap.SugaredLogger <= geekai-rebuild/logger.GetLogger()
+[Fx] PROVIDE	*gorm.Config <= geekai-rebuild/store.NewGormConfig()
+[Fx] PROVIDE	*gorm.DB <= geekai-rebuild/store.NewMysql()
+[Fx] PROVIDE	*redis.Client <= geekai-rebuild/store.NewRedisClient()
+[Fx] INVOKE		geekai-rebuild/store.AutoMigrateAndSeed()
+[Fx] BEFORE RUN	provide: geekai-rebuild/store.NewGormConfig()
+[Fx] RUN	provide: geekai-rebuild/store.NewGormConfig() in 0s
+[Fx] BEFORE RUN	provide: main.main.func1()
+[Fx] RUN	provide: main.main.func1() in 0s
+[Fx] BEFORE RUN	provide: geekai-rebuild/logger.GetLogger()
+[Fx] RUN	provide: geekai-rebuild/logger.GetLogger() in 0s
+[Fx] BEFORE RUN	provide: geekai-rebuild/store.NewMysql()
+[Fx] RUN	provide: geekai-rebuild/store.NewMysql() in 6.3037ms
+[Fx] INVOKE		geekai-rebuild/store.CheckRedis()
+[Fx] BEFORE RUN	provide: geekai-rebuild/store.NewRedisClient()
+[Fx] RUN	provide: geekai-rebuild/store.NewRedisClient() in 6.7664ms
+[Fx] INVOKE		main.main.func2()
+[Fx] BEFORE RUN	provide: geekai-rebuild/core.NewServer()
+[Fx] RUN	provide: geekai-rebuild/core.NewServer() in 510.4µs
+[Fx] BEFORE RUN	provide: geekai-rebuild/handler.NewBaseHandler()
+[Fx] RUN	provide: geekai-rebuild/handler.NewBaseHandler() in 0s
+[Fx] INVOKE		main.main.func3()
+[Fx] BEFORE RUN	provide: geekai-rebuild/core.NewSystemConfigCache()
+[Fx] RUN	provide: geekai-rebuild/core.NewSystemConfigCache() in 1.0424ms
+[Fx] BEFORE RUN	provide: geekai-rebuild/handler.NewConfigHandler()
+[Fx] RUN	provide: geekai-rebuild/handler.NewConfigHandler() in 0s
+[Fx] INVOKE		main.startServer()
+[Fx] BEFORE RUN	provide: go.uber.org/fx.New.func1()
+[Fx] RUN	provide: go.uber.org/fx.New.func1() in 0s
+[Fx] HOOK OnStart		main.startServer.func1() executing (caller: main.startServer)
+[Fx] HOOK OnStart		main.startServer.func1() called by main.startServer ran successfully in 0s
+[Fx] RUNNING
+exit status 0xffffffff

@@ -1,0 +1,47 @@
+name: Bug 报告 🐛
+description: 为 geekai 提交错误报告
+labels: ['Bug']
+body:
+  - type: checkboxes
+    attributes:
+      label: ⚠️  确认 issue 是否已存在 ⚠️
+      description: 在提交 Issue 之前，请在 issue 列表搜索一下，确保你不是在提交一个重复的 issue。
+      options:
+        - label: 我已经搜索了现有的问题，没有找到跟我问题相关的问题。
+          required: true
+  - type: dropdown
+    attributes:
+      label: GPT-3 or GPT-4
+      description: 请选择你使用的 GPT 模型
+      options:
+        - GPT-3.5
+        - GPT-4
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: 操作系统
+      description: 请选择你使用的操作系统
+      options:
+        - Windows
+        - Linux
+        - MacOS
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Bug 描述 📝
+      description: 请简单描述你发现的问题。
+  - type: textarea
+    attributes:
+      label: 重现步骤 🕹
+      description: |
+        **⚠️  无法重现的 issue 将会被关闭**
+  - type: textarea
+    attributes:
+      label: 你的应用配置信息
+      description: 请提供你的配置文档，**请注意数据脱敏**。
+      value: |
+        ```toml
+        把你的配置信息粘贴到这里
+        ```

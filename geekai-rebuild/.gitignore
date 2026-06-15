@@ -1,0 +1,8 @@
+bin/
+logs/*.log
+*.exe
+*.test
+*.tmp
+
+.idea/
+.vscode/

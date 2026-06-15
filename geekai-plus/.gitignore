@@ -1,0 +1,9 @@
+.DS_Store
+install.tar.gz
+data/mysql/data 
+data/redis/
+data/leveldb 
+data/app
+static
+logs
+.idea

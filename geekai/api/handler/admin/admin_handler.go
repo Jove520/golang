@@ -1,0 +1,303 @@
+package admin
+
+// * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// * Copyright 2023 The Geek-AI Authors. All rights reserved.
+// * Use of this source code is governed by a Apache-2.0 license
+// * that can be found in the LICENSE file.
+// * @Author yangjian102621@163.com
+// * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+import (
+	"context"
+	"fmt"
+	"geekai/core"
+	"geekai/core/middleware"
+	"geekai/core/types"
+	"geekai/handler"
+	logger2 "geekai/logger"
+	"geekai/service"
+	"geekai/store/model"
+	"geekai/store/vo"
+	"geekai/utils"
+	"geekai/utils/resp"
+	"time"
+
+	"github.com/go-redis/redis/v8"
+	"github.com/golang-jwt/jwt/v5"
+
+	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
+)
+
+var logger = logger2.GetLogger()
+
+const SuperUsername = "admin"
+
+type ManagerHandler struct {
+	handler.BaseHandler
+	redis   *redis.Client
+	captcha *service.CaptchaService
+}
+
+func NewAdminHandler(app *core.AppServer, db *gorm.DB, client *redis.Client, captcha *service.CaptchaService) *ManagerHandler {
+	return &ManagerHandler{
+		BaseHandler: handler.BaseHandler{DB: db, App: app},
+		redis:       client,
+		captcha:     captcha,
+	}
+}
+
+// RegisterRoutes 注册路由
+func (h *ManagerHandler) RegisterRoutes() {
+	group := h.App.Engine.Group("/api/admin/")
+
+	// 公开接口，不需要授权
+	group.POST("login", h.Login)
+	group.GET("logout", h.Logout)
+
+	// 需要管理员授权的接口
+	group.Use(middleware.AdminAuthMiddleware(h.App.Config.AdminSession.SecretKey, h.App.Redis))
+	{
+		group.GET("session", h.Session)
+		group.GET("list", h.List)
+		group.POST("save", h.Save)
+		group.POST("enable", h.Enable)
+		group.GET("remove", h.Remove)
+		group.POST("resetPass", h.ResetPass)
+	}
+}
+
+// Login 登录
+func (h *ManagerHandler) Login(c *gin.Context) {
+	var data struct {
+		Username string `json:"username"`
+		Password string `json:"password"`
+		Key      string `json:"key,omitempty"`
+		Dots     string `json:"dots,omitempty"`
+		X        int    `json:"x,omitempty"`
+	}
+	if err := c.ShouldBindJSON(&data); err != nil {
+		resp.ERROR(c, types.InvalidArgs)
+		return
+	}
+
+	var manager model.AdminUser
+	res := h.DB.Model(&model.AdminUser{}).Where("username = ?", data.Username).First(&manager)
+	if res.Error != nil {
+		resp.ERROR(c, "请检查用户名或者密码是否填写正确")
+		return
+	}
+	password := utils.GenPassword(data.Password, manager.Salt)
+	if password != manager.Password {
+		resp.ERROR(c, "用户名或密码错误")
+		return
+	}
+
+	// 超级管理员默认是ID:1
+	if manager.Username != SuperUsername && !manager.Status {
+		resp.ERROR(c, "该用户已被禁止登录，请联系超级管理员")
+		return
+	}
+
+	// 创建 token
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+		"user_id": manager.Id,
+		"expired": time.Now().Add(time.Second * time.Duration(h.App.Config.Session.MaxAge)).Unix(),
+	})
+	tokenString, err := token.SignedString([]byte(h.App.Config.AdminSession.SecretKey))
+	if err != nil {
+		resp.ERROR(c, "Failed to generate token, "+err.Error())
+		return
+	}
+	// 保存到 redis
+	key := fmt.Sprintf("admin/%d", manager.Id)
+	if _, err := h.redis.Set(context.Background(), key, tokenString, 0).Result(); err != nil {
+		resp.ERROR(c, "error with save token: "+err.Error())
+		return
+	}
+
+	// 更新最后登录时间和IP
+	manager.LastLoginIp = c.ClientIP()
+	manager.LastLoginAt = time.Now().Unix()
+	h.DB.Updates(&manager)
+
+	var result = struct {
+		IsSuperAdmin bool   `json:"is_super_admin"`
+		Token        string `json:"token"`
+	}{
+		IsSuperAdmin: manager.Username == SuperUsername,
+		Token:        tokenString,
+	}
+
+	resp.SUCCESS(c, result)
+}
+
+// Logout 注销
+func (h *ManagerHandler) Logout(c *gin.Context) {
+	key := h.GetUserKey(c)
+	if _, err := h.redis.Del(c, key).Result(); err != nil {
+		logger.Error("error with delete session: ", err)
+	} else {
+		resp.SUCCESS(c)
+	}
+}
+
+// Session 会话检测
+func (h *ManagerHandler) Session(c *gin.Context) {
+	id := h.GetAdminId(c)
+	if id == 0 {
+		resp.NotAuth(c, "当前用户已退出登录")
+		return
+	}
+	var manager model.AdminUser
+	err := h.DB.Where("id", id).First(&manager).Error
+	if err != nil {
+		resp.NotAuth(c, "当前用户已退出登录")
+		return
+	}
+
+	resp.SUCCESS(c, manager)
+}
+
+// List 数据列表
+func (h *ManagerHandler) List(c *gin.Context) {
+	var items []model.AdminUser
+	res := h.DB.Find(&items)
+	if res.Error != nil {
+		resp.ERROR(c, res.Error.Error())
+		return
+	}
+
+	users := make([]vo.AdminUser, 0)
+	for _, item := range items {
+		var u vo.AdminUser
+		err := utils.CopyObject(item, &u)
+		if err != nil {
+			continue
+		}
+		u.Id = item.Id
+		u.CreatedAt = item.CreatedAt.Unix()
+		users = append(users, u)
+	}
+
+	resp.SUCCESS(c, users)
+
+}
+
+func (h *ManagerHandler) Save(c *gin.Context) {
+	var data struct {
+		Username string `json:"username"`
+		Password string `json:"password"`
+		Status   bool   `json:"status"`
+	}
+	if err := c.ShouldBindJSON(&data); err != nil {
+		resp.ERROR(c, types.InvalidArgs)
+		return
+	}
+
+	var user model.AdminUser
+	res := h.DB.Where("username", data.Username).First(&user)
+	if res.Error == nil {
+		resp.ERROR(c, "用户名已存在")
+		return
+	}
+
+	// 生成密码
+	salt := utils.RandString(8)
+	password := utils.GenPassword(data.Password, salt)
+	res = h.DB.Save(&model.AdminUser{
+		Username: data.Username,
+		Password: password,
+		Salt:     salt,
+		Status:   data.Status,
+	})
+	if res.Error != nil {
+		resp.ERROR(c, "failed with update database")
+		return
+	}
+
+	resp.SUCCESS(c)
+}
+
+// Remove 删除管理员
+func (h *ManagerHandler) Remove(c *gin.Context) {
+	id := h.GetInt(c, "id", 0)
+	if id <= 0 {
+		resp.ERROR(c, types.InvalidArgs)
+		return
+	}
+
+	var user model.AdminUser
+	res := h.DB.Where("id", id).First(&user)
+	if res.Error != nil {
+		resp.ERROR(c, res.Error.Error())
+		return
+	}
+
+	if user.Username == SuperUsername {
+		resp.ERROR(c, "超级管理员不能删除")
+		return
+	}
+
+	res = h.DB.Where("id", id).Delete(&model.AdminUser{})
+	if res.Error != nil {
+		resp.ERROR(c, res.Error.Error())
+		return
+	}
+
+	resp.SUCCESS(c)
+}
+
+// Enable 启用/禁用
+func (h *ManagerHandler) Enable(c *gin.Context) {
+	var data struct {
+		Id      uint `json:"id"`
+		Enabled bool `json:"enabled"`
+	}
+
+	if err := c.ShouldBindJSON(&data); err != nil {
+		resp.ERROR(c, types.InvalidArgs)
+		return
+	}
+
+	res := h.DB.Model(&model.AdminUser{}).Where("id", data.Id).UpdateColumn("status", data.Enabled)
+	if res.Error != nil {
+		resp.ERROR(c, res.Error.Error())
+		return
+	}
+	resp.SUCCESS(c)
+}
+
+// ResetPass 重置密码
+func (h *ManagerHandler) ResetPass(c *gin.Context) {
+	id := h.GetAdminId(c)
+	var user model.AdminUser
+	res := h.DB.Where("id", id).First(&user)
+	if res.Error != nil {
+		resp.ERROR(c, res.Error.Error())
+		return
+	}
+	if user.Username != SuperUsername {
+		resp.ERROR(c, "只有超级管理员能够进行该操作")
+		return
+	}
+
+	var data struct {
+		Id       int    `json:"id"`
+		Password string `json:"password"`
+	}
+	if err := c.ShouldBindJSON(&data); err != nil {
+		resp.ERROR(c, types.InvalidArgs)
+		return
+	}
+
+	password := utils.GenPassword(data.Password, user.Salt)
+	user.Password = password
+	res = h.DB.Updates(&user)
+	if res.Error != nil {
+		resp.ERROR(c, res.Error.Error())
+		return
+	}
+
+	resp.SUCCESS(c)
+}

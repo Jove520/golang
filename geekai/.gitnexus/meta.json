@@ -1,0 +1,30 @@
+{
+  "repoPath": "D:\\AAAJove\\geekai\\geekai",
+  "lastCommit": "64832a2a04945d3c4d51582730a637d5d5d26325",
+  "indexedAt": "2026-06-10T03:08:29.738Z",
+  "remoteUrl": "https://github.com/yangjian102621/geekai",
+  "stats": {
+    "files": 455,
+    "nodes": 8484,
+    "edges": 23360,
+    "communities": 362,
+    "processes": 240,
+    "embeddings": 0
+  },
+  "capabilities": {
+    "graph": {
+      "provider": "ladybugdb",
+      "status": "available"
+    },
+    "fts": {
+      "provider": "ladybugdb-fts",
+      "status": "available"
+    },
+    "vectorSearch": {
+      "provider": "exact-scan",
+      "status": "unavailable",
+      "exactScanLimit": 10000,
+      "reason": "LadybugDB VECTOR is disabled on this platform; semantic search uses exact scan when embeddings exist."
+    }
+  }
+}
